@@ -1,0 +1,48 @@
+# Configuración específica para inferencia NLLB Awajún-Español
+
+inference:
+  # Parámetros de generación
+  max_length: 256
+  num_beams: 4
+  length_penalty: 1.0
+  early_stopping: true
+  do_sample: false
+  
+  # Procesamiento por lotes
+  batch_size: 16
+  max_batch_size: 32  # Para GPUs potentes
+  
+  # Optimizaciones
+  use_cache: true
+  pad_token_id: 1
+  eos_token_id: 2
+
+model:
+  # Configuración del modelo (heredada del entrenamiento)
+  lang_code: "agr_Latn"
+  
+data:
+  # Rutas de datos para evaluación
+  base_path: "data"
+  
+evaluation:
+  # Configuración para evaluación
+  metrics: ["chrf", "bleu"]
+  sample_size: null  # null = usar todo el dev set
+  
+output:
+  # Configuración de salida
+  save_predictions: true
+  detailed_analysis: true
+  sample_translations: 10
+  
+device:
+  # Configuración de dispositivo
+  force_cpu: false
+  gpu_id: 0
+  
+preprocessing:
+  # Configuración de preprocesamiento
+  normalize_punctuation: true
+  normalize_unicode: true
+  remove_extra_spaces: true
