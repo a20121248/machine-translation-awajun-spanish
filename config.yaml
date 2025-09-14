@@ -1,0 +1,37 @@
+# Configuración de entrenamiento NLLB Awajún-Español
+
+model:
+  name: "facebook/nllb-200-distilled-600M"
+  display_name: "nllb-600M-distilled"  # Nombre para mostrar en logs
+  max_length: 256
+  lang_code: "agr_Latn"
+
+training:
+  epochs: 12
+  batch_size: 32
+  learning_rate: 0.00003  # 3e-5 como número, no string
+  patience: 3
+  min_improvement: 0.1
+  warmup_steps: 1000
+  weight_decay: 0.001  # 1e-3 como número
+  clip_threshold: 1.0
+
+evaluation:
+  metrics: ["chrf", "bleu"]
+  eval_sample_size: null  # null = usar todo el dev set
+  eval_frequency: 1
+
+data:
+  base_path: "data"
+  dataset_version: "v1"  # v1 o v2
+  balance_method: "weighted"  # "weighted", "oversample", "none"
+  
+experiment:
+  name_prefix: "awajun_translation"
+  mlflow_uri: "file:./mlruns"
+  
+testing:
+  quick_test: false
+  test_train_samples: 50
+  test_dev_samples: 20
+  test_epochs: 2
