@@ -1,0 +1,12 @@
+{
+  "dataset_name": "awajun-spanish-v3-top40",
+  "base_corpus": "data/awajun-spanish-v1",
+  "synthetic_corpus": "data/monolingual-corpus/awajun_corpus_monolingue_synthetic.txt",
+  "threshold_percentile": 0.6,
+  "threshold_chrf": 28.83,
+  "base_pairs": 21964,
+  "synthetic_pairs": 8230,
+  "total_pairs": 30194,
+  "synthetic_percentage": 27.26,
+  "avg_chrf_synthetic": 37.25
+}

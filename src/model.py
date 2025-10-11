@@ -49,8 +49,8 @@ class NLLBModel:
                 logger.info(f"✅ Token añadido: {lang_code}")
             
             # Por ahora usar solo 1 GPU - DataParallel causa problemas
-            self.device = torch.device("cuda:0") if torch.cuda.is_available() else torch.device("cpu")
-            logger.info("🚀 Usando GPU 0 (DataParallel desactivado temporalmente)")
+            self.device = get_device()
+            logger.info(f"🚀 Usando dispositivo: {self.device}")
             
             # Mover modelo a dispositivo
             self.model.to(self.device)

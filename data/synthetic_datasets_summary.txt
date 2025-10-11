@@ -1,0 +1,48 @@
+================================================================================
+RESUMEN DE DATASETS SINTÉTICOS GENERADOS
+================================================================================
+
+                Dataset Threshold   Base Sintético  Total % Sintético chrF++ Avg
+awajun-spanish-v3-top20     35.00 21,964     4,120 26,084       15.8%      42.79
+awajun-spanish-v3-top40     28.83 21,964     8,230 30,194       27.3%      37.25
+awajun-spanish-v3-top60     23.78 21,964    12,339 34,303       36.0%      33.60
+awajun-spanish-v3-top80     17.85 21,964    16,455 38,419       42.8%      30.43
+      awajun-spanish-v3      0.00 21,964    20,564 42,528       48.4%      26.96
+
+ARCHIVOS GENERADOS POR DATASET:
+--------------------------------------------------------------------------------
+
+awajun-spanish-v3-top20/
+  ├── train.agr (26,084 líneas)
+  ├── train.es (26,084 líneas)
+  ├── train.source (26,084 líneas)
+  ├── dev.agr, dev.es, dev.source
+  └── dataset_info.json
+
+awajun-spanish-v3-top40/
+  ├── train.agr (30,194 líneas)
+  ├── train.es (30,194 líneas)
+  ├── train.source (30,194 líneas)
+  ├── dev.agr, dev.es, dev.source
+  └── dataset_info.json
+
+awajun-spanish-v3-top60/
+  ├── train.agr (34,303 líneas)
+  ├── train.es (34,303 líneas)
+  ├── train.source (34,303 líneas)
+  ├── dev.agr, dev.es, dev.source
+  └── dataset_info.json
+
+awajun-spanish-v3-top80/
+  ├── train.agr (38,419 líneas)
+  ├── train.es (38,419 líneas)
+  ├── train.source (38,419 líneas)
+  ├── dev.agr, dev.es, dev.source
+  └── dataset_info.json
+
+awajun-spanish-v3/
+  ├── train.agr (42,528 líneas)
+  ├── train.es (42,528 líneas)
+  ├── train.source (42,528 líneas)
+  ├── dev.agr, dev.es, dev.source
+  └── dataset_info.json

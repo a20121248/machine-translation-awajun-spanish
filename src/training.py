@@ -1,5 +1,6 @@
 """
 Lógica principal de entrenamiento con MLflow tracking
+Modificado para soportar evaluación cada N épocas
 """
 
 import os
@@ -102,34 +103,33 @@ class Trainer:
         # Crear directorio para guardar modelo
         self.run_dir = create_run_dir("runs", f"nllb_{self.config['experiment']['direction']}")
         
+        # NUEVO: Obtener frecuencia de evaluación
+        self.eval_frequency = self.config.get('evaluation', {}).get('eval_frequency', 1)
+        logger.info(f"📈 Evaluación chrF++ cada {self.eval_frequency} épocas")
+        
     def log_dataset_info(self):
         """Log información del dataset a MLflow - Versión mejorada"""
         try:
             import mlflow.data
-            
+            from mlflow.data.sources import LocalArtifactDatasetSource
+
             # Crear nombre más descriptivo del dataset
             dataset_version = self.config['data']['dataset_version']
             direction = self.config['experiment']['direction']
             model_name = self.config['model']['display_name']
-            
-            dataset_name = f"awajun-spanish-{dataset_version}"
-            
-            # Crear dataset objects con más metadatos
+
             train_dataset = mlflow.data.from_pandas(
                 self.df_train,
-                source=f"data/awajun-spanish-{dataset_version}/train.*",
-                name=f"{dataset_name}-train-{direction}",
-                targets=[self.tgt_lang],
-                # Añadir metadatos adicionales
-                digest=f"train-{dataset_version}-{direction}-{len(self.df_train)}"
+                source=LocalArtifactDatasetSource(f"data/awajun-spanish-{dataset_version}/train.*"),
+                name=f"{direction}-{dataset_version}-{self.config['data']['balance_method']}",
+                targets=self.tgt_lang
             )
-            
+           
             dev_dataset = mlflow.data.from_pandas(
                 self.df_dev,
-                source=f"data/awajun-spanish-{dataset_version}/dev.*",
-                name=f"{dataset_name}-dev-{direction}",
-                targets=[self.tgt_lang],
-                digest=f"dev-{dataset_version}-{direction}-{len(self.df_dev)}"
+                source=LocalArtifactDatasetSource(f"data/awajun-spanish-{dataset_version}/dev.*"),
+                name=f"{direction}-{dataset_version}-{self.config['data']['balance_method']}",
+                targets=self.tgt_lang
             )
             
             # Log datasets con contexto específico
@@ -153,22 +153,12 @@ class Trainer:
             for domain, count in domain_dist.items():
                 metric_name = f"dataset_{dataset_version}_domain_{domain.replace(' ', '_').replace('&', 'and')}_count"
                 mlflow.log_metric(metric_name, count)
-                
-            # Log dataset parameters para mejor filtrado
-            dataset_params = {
-                f"dataset_version": dataset_version,
-                f"dataset_name": dataset_name,
-                f"dataset_balance_method": self.config['data']['balance_method'],
-                f"dataset_train_samples": len(self.df_train),
-                f"dataset_dev_samples": len(self.df_dev),
-            }
-            
-            mlflow.log_params(dataset_params)
+           
             
             # Log dataset summary as artifact
             self._create_dataset_summary_artifact(dataset_version, domain_dist)
             
-            logger.info(f"✅ Dataset {dataset_name} (version {dataset_version}) logged to MLflow")
+            logger.info(f"✅ Datasets (version {dataset_version}) logged to MLflow")
             
         except Exception as e:
             logger.warning(f"⚠️ Error logging dataset: {e}")
@@ -285,28 +275,46 @@ class Trainer:
         
         return metrics
     
+    def should_evaluate_this_epoch(self, epoch):
+        """Determinar si se debe evaluar en esta época"""
+        # Siempre evaluar en la primera época
+        if epoch == 0:
+            return True
+        
+        # Siempre evaluar en la última época
+        if epoch == self.config['training']['epochs'] - 1:
+            return True
+        
+        # Evaluar según frecuencia configurada
+        if (epoch + 1) % self.eval_frequency == 0:
+            return True
+        
+        return False
+    
     def log_metrics(self, metrics, epoch):
         """Loggear métricas a MLflow"""
         # Log all metrics
         mlflow.log_metrics(metrics, step=epoch)
         
-        # Actualizar mejores métricas
-        chrf_score = metrics.get('eval_chrf', 0)
-        if chrf_score > self.best_metrics.get('best_chrf', 0):
-            self.best_metrics['best_chrf'] = chrf_score
-            self.best_metrics['best_epoch'] = epoch
-            self.save_best_model()
-        
-        # Log best metrics
-        mlflow.log_metrics({
-            'best_chrf': self.best_metrics.get('best_chrf', 0),
-            'best_epoch': self.best_metrics.get('best_epoch', 0)
-        }, step=epoch)
+        # Actualizar mejores métricas si hay chrF++ en las métricas
+        if 'eval_chrf' in metrics:
+            chrf_score = metrics.get('eval_chrf', 0)
+            if chrf_score > self.best_metrics.get('best_chrf', 0):
+                self.best_metrics['best_chrf'] = chrf_score
+                self.best_metrics['best_epoch'] = epoch
+                self.save_best_model()
+            
+            # Log best metrics
+            mlflow.log_metrics({
+                'best_chrf': self.best_metrics.get('best_chrf', 0),
+                'best_epoch': self.best_metrics.get('best_epoch', 0)
+            }, step=epoch)
         
     def save_best_model(self):
         """Guardar mejor modelo"""
         best_model_path = os.path.join(self.run_dir, "best_model")
         self.model_wrapper.save_model(best_model_path)
+        logger.info(f"💾 Mejor modelo guardado (chrF++: {self.best_metrics.get('best_chrf', 0):.2f})")
         
     def create_loss_plot(self, losses):
         """Crear gráfico de pérdida - Versión corregida"""
@@ -364,14 +372,15 @@ class Trainer:
         
         # Log training config - Versión mejorada
         mlflow.log_params({
-            'model_name': self.model_display_name,  # Nombre legible del modelo
-            'model_path': self.config['model']['name'],  # Path completo de HuggingFace
-            'dataset_version': self.config['data']['dataset_version'],  # Como parámetro
+            'model_name': self.model_display_name,
+            'model_path': self.config['model']['name'],
+            'dataset_version': self.config['data']['dataset_version'],
             'direction': self.config['experiment']['direction'],
             'epochs': self.config['training']['epochs'],
             'batch_size': self.config['training']['batch_size'],
             'learning_rate': self.config['training']['learning_rate'],
             'patience': self.config['training']['patience'],
+            'eval_frequency': self.eval_frequency,  # NUEVO
             'balance_method': self.config['data']['balance_method'],
             'max_length': self.config['model']['max_length'],
             'warmup_steps': self.config['training']['warmup_steps'],
@@ -379,8 +388,18 @@ class Trainer:
             'clip_threshold': self.config['training']['clip_threshold']
         })
         
-    def print_epoch_summary(self, epoch, metrics, epoch_time, early_stop_status):
+    def print_epoch_summary(self, epoch, metrics, epoch_time, evaluated=True):
         """Imprimir resumen de época"""
+        if not evaluated:
+            # Solo mostrar loss si no se evaluó
+            loss = metrics.get('train_loss_epoch', 0)
+            print(f"📊 Época {epoch+1} completada - "
+                  f"Loss: {loss:.4f} | "
+                  f"Tiempo: {format_time(epoch_time)} "
+                  f"[Eval programada cada {self.eval_frequency} épocas]")
+            return
+        
+        # Mostrar métricas completas si se evaluó
         chrf = metrics.get('eval_chrf', 0)
         bleu = metrics.get('eval_bleu', 0)
         
@@ -389,17 +408,12 @@ class Trainer:
         bleu_trend = "📈" if bleu > self.best_metrics.get('prev_bleu', 0) else "📉"
         
         # Indicador de mejor modelo
-        best_indicator = " ✨" if chrf == self.best_metrics.get('best_chrf', 0) else ""
-        
-        # Early stopping status
-        patience_info = ""
-        if early_stop_status['counter'] > 0:
-            patience_info = f" [Paciencia: {early_stop_status['counter']}/{early_stop_status['patience']}]"
+        best_indicator = " ✨ MEJOR" if chrf == self.best_metrics.get('best_chrf', 0) else ""
         
         print(f"📊 Época {epoch+1} completada - "
               f"CHRF++: {chrf:.2f} {chrf_trend} | "
               f"BLEU: {bleu:.2f} {bleu_trend} | "
-              f"Tiempo: {format_time(epoch_time)}{best_indicator}{patience_info}")
+              f"Tiempo: {format_time(epoch_time)}{best_indicator}")
         
         # Guardar para próxima comparación
         self.best_metrics['prev_chrf'] = chrf
@@ -416,8 +430,9 @@ class Trainer:
         total_steps = len(dataloader) * self.config['training']['epochs']
         logger.info(f"📊 Pasos totales: {total_steps}")
         logger.info(f"⚖️  Método de balanceo: {self.config['data']['balance_method']}")
+        logger.info(f"📈 Evaluación chrF++ cada: {self.eval_frequency} épocas")
         
-        epoch_losses = []  # Cambiar nombre para mayor claridad
+        epoch_losses = []
         self.start_time = time.time()
         
         # Iniciar run con tags mejorados
@@ -430,36 +445,50 @@ class Trainer:
                 
                 # Entrenamiento
                 avg_loss = self.train_epoch(dataloader, epoch)
-                epoch_losses.append(avg_loss)  # Almacenar pérdida promedio por época
+                epoch_losses.append(avg_loss)
                 
-                # Evaluación
-                metrics = self.evaluate_epoch(epoch)
-                metrics['train_loss_epoch'] = avg_loss
+                # NUEVO: Decidir si evaluar en esta época
+                should_eval = self.should_evaluate_this_epoch(epoch)
                 
-                # Early stopping
-                chrf_score = metrics.get('eval_chrf', 0)
-                should_stop = self.early_stopping(chrf_score)
-                early_stop_status = self.early_stopping.get_status()
-                
-                # Logging
-                epoch_time = time.time() - epoch_start
-                self.log_metrics(metrics, epoch)
-                self.training_history.append(metrics)
-                
-                # Mostrar progreso
-                self.print_epoch_summary(epoch, metrics, epoch_time, early_stop_status)
-                
-                # Muestras de traducción cada pocas épocas
-                if epoch % 3 == 0:
-                    samples = self.evaluator.get_sample_translations(
-                        self.df_dev, self.src_lang, self.tgt_lang, self.src_token
-                    )
-                    self.evaluator.log_sample_translations(samples, epoch)
-                
-                # Early stopping
-                if should_stop:
-                    logger.info(f"⏰ Early stopping activado en época {epoch+1}")
-                    break
+                if should_eval:
+                    logger.info(f"📊 Evaluando modelo (época {epoch+1})...")
+                    
+                    # Evaluación completa
+                    metrics = self.evaluate_epoch(epoch)
+                    metrics['train_loss_epoch'] = avg_loss
+                    
+                    # Early stopping basado en chrF++
+                    chrf_score = metrics.get('eval_chrf', 0)
+                    should_stop = self.early_stopping(chrf_score)
+                    
+                    # Logging
+                    self.log_metrics(metrics, epoch)
+                    self.training_history.append(metrics)
+                    
+                    # Muestras de traducción
+                    if epoch % (self.eval_frequency * 3) == 0:  # Cada 3 evaluaciones
+                        samples = self.evaluator.get_sample_translations(
+                            self.df_dev, self.src_lang, self.tgt_lang, self.src_token
+                        )
+                        self.evaluator.log_sample_translations(samples, epoch)
+                    
+                    # Mostrar progreso con métricas
+                    epoch_time = time.time() - epoch_start
+                    self.print_epoch_summary(epoch, metrics, epoch_time, evaluated=True)
+                    
+                    # Early stopping
+                    if should_stop:
+                        logger.info(f"⏰ Early stopping activado en época {epoch+1}")
+                        logger.info(f"   Mejor chrF++: {self.best_metrics.get('best_chrf', 0):.2f} en época {self.best_metrics.get('best_epoch', 0)+1}")
+                        break
+                else:
+                    # Solo loggear loss si no evaluamos
+                    metrics = {'train_loss_epoch': avg_loss}
+                    mlflow.log_metrics(metrics, step=epoch)
+                    
+                    # Mostrar progreso simplificado
+                    epoch_time = time.time() - epoch_start
+                    self.print_epoch_summary(epoch, metrics, epoch_time, evaluated=False)
             
             # Finalización
             total_time = time.time() - self.start_time

@@ -1,0 +1,22 @@
+{
+  "timestamp": "2025-10-09 05:25:32",
+  "input_file": "awajun_corpus_monolingue.txt",
+  "output_file": "awajun_corpus_monolingue_synthetic.txt",
+  "global_metrics": {
+    "BLEU": 2.48,
+    "chrF++": 28.59
+  },
+  "statistics": {
+    "total_lines": 20564,
+    "avg_chrf": 26.96,
+    "min_chrf": 0.0,
+    "max_chrf": 100.0,
+    "lines_above_50": 538,
+    "lines_above_60": 164,
+    "lines_above_70": 74
+  },
+  "interpretation": {
+    "quality": "MEJORABLE",
+    "recommendation": "Revisar pipeline de traducción"
+  }
+}

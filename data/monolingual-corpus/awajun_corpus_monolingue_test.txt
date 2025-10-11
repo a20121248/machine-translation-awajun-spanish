@@ -1,0 +1,101 @@
+document_id|segment_id|awajun_text
+AGR0001_segmented.txt|1|Mina wakesa augtaig 2014 tabaunum chicham etegja agakbau mina duka aminui
+AGR0001_segmented.txt|3|Antsag, baki bakichik chicham agakbauwa duka takastin umigkamu minawai
+AGR0001_segmented.txt|4|Atum ausajum agagtin, antsamek atum inimsajum dekatin
+AGR0001_segmented.txt|5|Juju umiktin mina duka atumek umiktatjume jintinjamin apa, duku aniashkumesh pataim aidau iniasjum
+AGR0001_segmented.txt|6|Juju chicham agakbauwa nunak wakesayap ausattawa tajai
+AGR0001_segmented.txt|7|Mina wakesa augtaig 2014
+AGR0001_segmented.txt|8|¿Dekamek bakichik kuntin namakaa wekaeyin tawa dusha?
+AGR0001_segmented.txt|9|América ikamji wegaja nunui awai bakichik kuntin sumpa anmamtin Basiliscos daagtin
+AGR0001_segmented.txt|10|Juju kuntin pegkegchia duka wekaenai yuminum
+AGR0001_segmented.txt|11|Ukunum nawee aja duka patu nawegama annai
+AGR0001_segmented.txt|12|Nunu nawe yayawai yuminum wekaebaunum
+AGR0001_segmented.txt|13|Nuwigtu, namaka tepemainnash nii shiig senchi namaka tupikamuji, imanik kijinchauji, nuwigtu nii imanik muunchauwa nunu yayawai
+AGR0001_segmented.txt|14|Basiliscosak 5 metros tumain wekaemainai yuminmak
+AGR0001_segmented.txt|15|Namaka tepeattak wegakug yukuak jinnai
+AGR0001_segmented.txt|16|Juu kuntinuk namaka wekaeguk yupichu wainbaitsui, ima shiwaji minitam yuminmak tupikainai
+AGR0001_segmented.txt|17|Shiwaji atsutaig yukuak wekaenai
+AGR0001_segmented.txt|18|¿Basiliscos tawa dusha namaka tepeattak wegakush wajukeawa?
+AGR0001_segmented.txt|19|¿Basiliscos tawa nunash wajijii yayawa yuminum wekaebaunmash?
+AGR0001_segmented.txt|20|Apa iniasta tikish kuntin namaka wekaenun dekatsuash
+AGR0001_segmented.txt|21|Dutikam wajukukita nunu pachisam papiigmin agagta
+AGR0001_segmented.txt|22|Nunu agajum nunu papii autaigmin jukim kumpajum aidau emtin ausata
+AGR0001_segmented.txt|23|¿Dekamek ii ikam batsataig nunuiya bakichik Kuntin shiig diipas wekaeyin tuina dusha, tikish nungkanmaya Kuntin aina nujai apatka diyamash?
+AGR0001_segmented.txt|24|Juu agagbauwa nunu ausam dekata
+AGR0001_segmented.txt|25|Uyushik pujuwai sudamérica ikamji wegaka nua nunui
+AGR0001_segmented.txt|26|Tsawaig uyushik numi ayamunum, numi kanawen sapagmama nemaa kanajua anin wee pujuwai
+AGR0001_segmented.txt|27|Juju kuntina duka tuke shiig emamkes diipas wekaenai
+AGR0001_segmented.txt|28|Shiig diipas wakaeyin asamtai yupichu dekabaitsui buchituash atsa kanawash duka
+AGR0001_segmented.txt|29|Uyush wajuk buchituaki nuna diista tau ekemsa shiig diyamak diipas numi tsapachawash anmamtuk buchitnai
+AGR0001_segmented.txt|30|Aniau asamtai juu kuntina duka uwebaitsuapi tusa tumainai
+AGR0001_segmented.txt|31|Tujash nii diipas wekaebauwa nunuwai uwemtika duka niina shiwaji aina nujai
+AGR0001_segmented.txt|32|Uyushik tupikakig uwemchauwai shiwaji minitmak, diipas waitkai tusa buchittsuk numinum duka ayamunum uumak ekemnai
+AGR0001_segmented.txt|33|Antsag niina uje samekbauwa dusha yainai, samekbauwa duka numinum kuwish samekbau ayamunum pagkumak wekaeyin asa ujeg samekbauwai
+AGR0001_segmented.txt|34|Aanin samekbau wainmainchau asamtai kuntin niina shiwajish ijus pujutaish wainchauwai
+AGR0001_segmented.txt|35|¿Juju agagbauwa dusha wajina jikattsash augmatua? tsentsakta dekaskea nuna tau
+AGR0001_segmented.txt|36|Chicham agagbau aina nunui agagta Dekas dekaskea nuna tau, aniashkumesh agagta Wait waita nuna tau
+AGR0001_segmented.txt|37|Uyushik shiwaji minitmak tupikak uwemnai
+AGR0001_segmented.txt|38|Uyushik numi ayamunum, numi kanawen sapagmama nemaa kanajua anin wee pujuwai
+AGR0001_segmented.txt|39|Augmatui uyush tuwig pujuwaita nuna
+AGR0001_segmented.txt|40|Augmatui uyush wajuk kaniawa nuna
+AGR0001_segmented.txt|41|Agagbaunmash, ¿wajuk uwemnaita uyushish shiwaji minitmash?
+AGR0001_segmented.txt|42|¿Wagka uyush buchitbaunash numi tsapachawash anmamtuk buchitnai tawa?
+AGR0001_segmented.txt|43|Augmatui uyush wajuk diipasash wekaewakita nuna
+AGR0001_segmented.txt|44|Yabai augmatbau ausam dekata bakichik muun nii batsatkamunmayan aents aidaun uwemtikjauwa nunu
+AGR0001_segmented.txt|45|Bakichik Apu Wampis Tintayu dagtin, ishamsa diitai waimaku, kashi kanittaman kajanum yusa, kawau aidau ujainak ame pujam duka yumi yutug abauji wegak amuja ajapattawai tusa uja pujamu puyatuk kujatuk shintak, paan shiig pujumainchau dekapeg, patayi aidaun ijumag wamak numi muun aidaunum wajatajum tusa tau timayi
+AGR0001_segmented.txt|46|Antsag tikish batsatkamu aidaunash ujaktajai ditash uwemjatinme tiu, tusa ikamyawa najanea shiig senchi tupi tupikakua jegaa ujajatuk nuwigtushkam inagnamunum pujuttamanashkam ujaaya tuajame
+AGR0001_segmented.txt|47|Tujash nigka dekaya tuajame senchi tsawan kuntin najanea nii pujumainchaunak aniaitak najanea ujajatia tuajame
+AGR0001_segmented.txt|48|Nunik ujajatuk nagkanai, yumi nagkamdau, nunitai Tintayushkam ikamyawa najaneamuitak tupi tupikakua patayi batsatbaunum tau, shijash batsata tusa diistatus
+AGR0001_segmented.txt|50|Patayi aidaushkam numi muunnum wajag shiig pujuidau timayi
+AGR0001_segmented.txt|51|Nuniai dekashbau dekas niina patayii numi sutagchinum wajag batsatun dujag dujaji wega
+AGR0001_segmented.txt|52|Qu nunu numin kagkapejai umuchiau timayi nunitai iyaumainun wainak Tintayu shiig senchi pimpikiuwaitak bachik senchiji ajamuitak shiig muun pagki najanea pee minama pujusmatai patayi aidaushkam nunig katinkaju numi muun abaunum
+AGR0001_segmented.txt|53|Nunik ashi uwemainai Tintayu shiig senchi pimpikiu asa ataktu aents wemainchau wajasu nuwigtu yawetnash yaweju asa nunu abauji akaebaunum pagki najaneamuitak iyagka megkaekau
+AGR0001_segmented.txt|54|Jimag uweja amua yuta yutakua nagkaemaki kuyuamtai
+AGR0001_segmented.txt|55|Jimag semana egainak patayi wekaetusajui, tujash tuke igkugchaju timayi
+AGR0001_segmented.txt|56|Nui nagkamas nunu pagkiya duka nii wantinkattak wantinu timayi
+AGR0001_segmented.txt|57|Tujash nunu pagkiya nunak ishamainachu, wagki aents waitiaun yayau asamtai
+AGR0001_segmented.txt|58|¿Wagkag Tintayush patayinash numinum wakatajum tusash tiuwaita?
+AGR0001_segmented.txt|59|Aagsa ukukbauwa nunui agagta wajii nagkaemakiu aina nunu pachimtsuk betekmamsam
+AGR0001_segmented.txt|60|Tintayu kanag kajamjau pujam nunu abau yutuattawai tabaun
+AGR0001_segmented.txt|61|Tintayu kanag pujau shintak batsatkamunmayan aents aidaun ijumag numi muunnum wajatajum tusa tiu
+AGR0001_segmented.txt|62|Tusa Tintayu ikamyawa najanea ujajatu
+AGR0001_segmented.txt|63|Niina patayi numi sutagchinum wajag batsatun dujag numin kagkapejai umuchiau
+AGR0001_segmented.txt|64|¿Chicham agagbaush wajina j i k a t t s a s h a u g m atua? yabai tsentsakta
+AGR0001_segmented.txt|65|Tintayu wajuk kajamjau ayi nuna
+AGR0001_segmented.txt|66|Tintayu kuntin najanea wajuk aents aidaunash yaigkami nuna
+AGR0001_segmented.txt|67|Tintayu wajukan shiig wamkesh batsatkamunmash jegaush ayi nuna
+AGR0001_segmented.txt|68|¿Ame anentaimsa diyamash Tintayush tikish aidaunash ujamainnaka ujakuit atsa patayijai jugat ujajattsuk juwamainnat ankauwait?
+AGR0001_segmented.txt|69|Yabai apa iniasta aniashkumesh apachun augmatbau ausaum anmamtinun dekainatsuash nunu
+AGR0001_segmented.txt|70|Agagta papiigmin dutikam kumpajum ujakta
+AGR0001_segmented.txt|71|Tikish nugkanmaya griego aina duka pumpuknak shiig senchi nuwigtu yawetkas ishamkachu ata nuna iwainin tusa tinu ainawai
+AGR0001_segmented.txt|72|Yabai diismi ii batsatkamunum Perunum pumpuknash wajuk diinuk ainawa nunu diismi
+AGR0001_segmented.txt|73|Ii Shipibo-Konibo aidautik pumpuk tsawak shiig senchi shinakuig, ijagkap tattawa tusa dekanui
+AGR0001_segmented.txt|74|Nuniau asa nijamash umika dakamnawai ijag takui ajamsatasa
+AGR0001_segmented.txt|75|Ii Awajún aidautik, pumpuk jega ijus numinum ekemas aents jaak pujamunum shinakuig jakattakuiyap imatua tusa dekau ainaji
+AGR0001_segmented.txt|76|Nunitaig jau patayi aidauk tunchiap waweae nuniau asayap diisti tusa pumpukun awemae tinu ainawai
+AGR0001_segmented.txt|77|Tuidau asa iwishin bukujati tsuwajatnunum juu ainawai
+AGR0001_segmented.txt|78|¿Ame pujamunmash atumesh pumpukush wajuk wainna ainagme nunu augmattsata?
+AGR0001_segmented.txt|79|Ii Aimara aidautik, pumpuk shinakuig aentsuak jakagtatua, aniashkush patayap jakagtatua tusa dekau ainaji
+AGR0001_segmented.txt|80|Antsag muun aidauk ujajatkug pumpuk jega esajin ekemas shinakuig alpaca ukunchi aniashkush llama ukunchi juki nagkia uwaka awemata tuajame, aikamak besejatbauk umintsa tau asa
+AGR0001_segmented.txt|81|Jumamtinuk ii Quechua aidauti batsatkamua nunuishkam pumpukuk jakagtinum etsegnai jega ijus shinak yaki jakattawa nuna jeen
+AGR0001_segmented.txt|82|Nunitaig nui batsamin aina duka pumpukun achikag ayapag achiig jeganum andujuk idayin ainawai, dutikamak besetak umintsa tinu aidau asa
+AGR0001_segmented.txt|85|shaa nuwigtu tikish aidaujai pachimja najanamui tusa
+AGR0001_segmented.txt|86|peRunuM chocolaTE jiikBau tikish nuGkanMash Wantinui
+AGR0001_segmented.txt|87|Vicepresidenta perunumia Marizol Espinoza, wee París tawa nunui chocolate awajún najanamun iwainakta tusa, cholate iwainatai nuwigtu bakau iwainatai abaunum
+AGR0001_segmented.txt|88|Espinosa etsejak tawai nuniak juju chocolate najanamua duka kampatum mijan pujugsa najanamui, bakichik proyecto chocolate bakau jiikmi tusa tibaunum
+AGR0001_segmented.txt|89|Juka proyectok jikbauwai awajún departamento Loreto nuwigtu Amazonas batsatujai takasmi tusa
+AGR0001_segmented.txt|90|Antsag bakau San Martinnumia nuwigtu selva centralnumia aidaun iwainake
+AGR0001_segmented.txt|91|Bakau yabai ajaamua duka yaunshkek coca ajaa sujutai ajakui nua nunui yabaik bakaun ajakmainawai
+AGR0001_segmented.txt|92|Antsag Espinozak wetatui Holanda chocolate najanin batsatbaunum awajún aidau chocolate najanamun iwainaktatus, yau yakat Parísnum shiig anease chocolate shiig pegkejai ashi nugkanum diyamash tusa eme anentsa diisbau asamtai
+AGR0001_segmented.txt|93|Mujaya pan tae lima
+AGR0001_segmented.txt|94|Paankan najanin Perunum batsamin aidau Lima kaunawag Paankan iwainakaje antsag sujutnashkam sujukaje feria T´anta Wawa 2013 tawa nunui
+AGR0001_segmented.txt|96|nak jetemjuke Asociación Tawamtinsuyo nunikmatai Lima Parque Exposicion tawa nua nunui iwainamuk asae 01 noviembre 2013 tin.
+AGR0001_segmented.txt|97|Juju iwainamunmak asae nantsebaushkam antsag tampujan awatak kantamin aidaush batsamsaje
+AGR0001_segmented.txt|98|Juju feria T´anta Wawa
+AGR0001_segmented.txt|99|Gladys Cabezas, paan najanta
+AGR0001_segmented.txt|100|Yarinacocha dekapdayaMu uchi aMuntsuaMunuM
+AGR0001_segmented.txt|101|Distrito Yarinacochanum uchi amuntsuaku dekapdayamu asae muntsu senchiji tabau
+AGR0001_segmented.txt|102|Junak jetemjuke perunumia tsuwajatin aidau juunig takau aina nunu
+AGR0001_segmented.txt|103|Paan iwainaktatusa muntsu uchi amuntsuamu wajupak yayawa nuna
+AGR0001_segmented.txt|104|Juju dekapdayamunmak kuashat nuwa uchiji ajuinamu pachiinkaje, uchiji bakichik mijan ajuinamushkam
+AGR0001_segmented.txt|105|Jutika dekapdayamunum depetmake Lupita Saboya dukap uchijin Rankon daagtinun 1 hora tumain amuntsuau asa

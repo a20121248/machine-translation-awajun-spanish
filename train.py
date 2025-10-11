@@ -2,6 +2,7 @@
 """
 Script principal para fine-tuning NLLB Awajún-Español
 Uso: python train.py --direction es2agr --dataset_version v1
+Soporta datasets sintéticos: v3-top20, v3-top40, v3-top60, v3-top80, v3
 """
 
 import argparse
@@ -24,8 +25,7 @@ def parse_args():
                        choices=['es2agr', 'agr2es'], 
                        help='Dirección de traducción')
     parser.add_argument('--dataset_version', type=str, default='v1',
-                       choices=['v1', 'v2'],
-                       help='Versión del dataset (v1=normal, v2=extendido)')
+                       help='Versión del dataset (v1, v2, v3-top20, v3-top40, v3-top60, v3-top80, v3)')
     
     # Overrides de configuración
     parser.add_argument('--config', type=str, default='config.yaml',
@@ -38,8 +38,10 @@ def parse_args():
                        help='Tamaño de batch (override config)')
     parser.add_argument('--learning_rate', type=float, default=None,
                        help='Learning rate (override config)')
-    parser.add_argument('--patience', type=int, default=None,
-                       help='Paciencia para early stopping (override config)')
+    parser.add_argument('--patience', type=int, default=10,
+                       help='Paciencia para early stopping (default: 10)')
+    parser.add_argument('--eval_frequency', type=int, default=10,
+                       help='Evaluar chrF++ cada N épocas (default: 10)')
     
     # Modos especiales
     parser.add_argument('--test_mode', action='store_true',
@@ -80,11 +82,15 @@ def main():
     if args.patience is not None:
         config['training']['patience'] = args.patience
     
+    # NUEVO: Configurar frecuencia de evaluación
+    config['evaluation']['eval_frequency'] = args.eval_frequency
+    
     # Configurar modo de prueba
     if args.test_mode:
         config['testing']['quick_test'] = True
         config['training']['epochs'] = config['testing']['test_epochs']
         config['evaluation']['eval_sample_size'] = 50  # Evaluación súper rápida
+        config['evaluation']['eval_frequency'] = 1  # Evaluar cada época en test
         print("🧪 Modo de prueba activado - Entrenamiento rápido")
     
     # Configurar evaluación rápida
@@ -97,9 +103,31 @@ def main():
     config['experiment']['direction'] = args.direction
     config['experiment']['resume'] = args.resume
     
+    # Validar que el dataset existe
+    from pathlib import Path
+    dataset_path = Path(f"data/awajun-spanish-{args.dataset_version}")
+    if not dataset_path.exists():
+        print(f"❌ Error: Dataset no encontrado en {dataset_path}")
+        print(f"   Asegúrate de que exista el directorio con los archivos:")
+        print(f"   - train.agr, train.es, train.source")
+        print(f"   - dev.agr, dev.es, dev.source")
+        exit(1)
+    
     # Setup logging y semilla
     setup_logging()
     set_random_seed(42)
+    
+    # Mensaje informativo
+    print(f"\n{'='*80}")
+    print(f"🚀 INICIANDO ENTRENAMIENTO")
+    print(f"{'='*80}")
+    print(f"📦 Dataset: awajun-spanish-{args.dataset_version}")
+    print(f"🔄 Dirección: {args.direction}")
+    print(f"🤖 Modelo: {config['model']['display_name']}")
+    print(f"📊 Épocas: {config['training']['epochs']}")
+    print(f"📈 Eval cada: {config['evaluation']['eval_frequency']} épocas")
+    print(f"⏸️  Paciencia: {config['training']['patience']} épocas sin mejora")
+    print(f"{'='*80}\n")
     
     # Crear y ejecutar trainer
     trainer = Trainer(config)

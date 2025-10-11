@@ -1,3 +1,7 @@
+cd /home/jmonzon/machine-translation-awajun-spanish_backup/
+source /home/jmonzon/envs/nllb-2/bin/activate
+
+
 # 🚀 Comandos para Experimentos NLLB
 
 ## 📁 Estructura de directorios requerida
