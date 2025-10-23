@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Script principal para fine-tuning NLLB Awajún-Español
-Uso: python train.py --direction es2agr --dataset_version v1
+Uso: python train.py --direction es2agr --dataset_version v1 --seed 42
 Soporta datasets sintéticos: v3-top20, v3-top40, v3-top60, v3-top80, v3
 """
 
@@ -42,6 +42,9 @@ def parse_args():
                        help='Paciencia para early stopping (default: 10)')
     parser.add_argument('--eval_frequency', type=int, default=10,
                        help='Evaluar chrF++ cada N épocas (default: 10)')
+    parser.add_argument('--balance_method', type=str, default=None,
+                       choices=['none', 'weighted', 'oversample'],
+                       help='Método de balanceo de datos (override config)')
     
     # Modos especiales
     parser.add_argument('--test_mode', action='store_true',
@@ -50,6 +53,8 @@ def parse_args():
                        help='Evaluación rápida (500 samples en lugar de todo dev)')
     parser.add_argument('--resume', type=str, default=None,
                        help='Reanudar desde checkpoint')
+    parser.add_argument('--seed', type=int, default=42,
+                       help='Semilla aleatoria para reproducibilidad (default: 42)')
     
     return parser.parse_args()
 
@@ -82,6 +87,10 @@ def main():
     if args.patience is not None:
         config['training']['patience'] = args.patience
     
+    # NUEVO: Override de balance_method
+    if args.balance_method is not None:
+        config['data']['balance_method'] = args.balance_method
+    
     # NUEVO: Configurar frecuencia de evaluación
     config['evaluation']['eval_frequency'] = args.eval_frequency
     
@@ -113,9 +122,9 @@ def main():
         print(f"   - dev.agr, dev.es, dev.source")
         exit(1)
     
-    # Setup logging y semilla
+    # Setup logging y semilla (USAR LA SEMILLA DEL ARGUMENTO)
     setup_logging()
-    set_random_seed(42)
+    set_random_seed(args.seed)
     
     # Mensaje informativo
     print(f"\n{'='*80}")
@@ -127,6 +136,7 @@ def main():
     print(f"📊 Épocas: {config['training']['epochs']}")
     print(f"📈 Eval cada: {config['evaluation']['eval_frequency']} épocas")
     print(f"⏸️  Paciencia: {config['training']['patience']} épocas sin mejora")
+    print(f"🎲 Semilla: {args.seed}")
     print(f"{'='*80}\n")
     
     # Crear y ejecutar trainer

@@ -1,0 +1,7 @@
+model,direction,balance_method,best_chrf,eval_bleu,best_epoch,total_training_time_minutes
+nllb-600M-distilled,es2agr,none,34.72,6.66,18.0,485.37
+nllb-1.3B-distilled,agr2es,oversample,34.66,14.08,6.0,706.17
+nllb-1.3B-distilled,agr2es,none,34.6,14.87,5.0,422.51
+nllb-600M-distilled,es2agr,weighted,31.87,5.03,19.0,481.9
+nllb-600M-distilled,agr2es,none,31.73,11.95,13.0,311.26
+nllb-600M-distilled,agr2es,weighted,30.37,11.15,18.0,367.95

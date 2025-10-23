@@ -1,0 +1,61 @@
+{
+  "corpus_original_awajun": {
+    "name": "Corpus Original Awajún",
+    "total_sentences": 21964,
+    "total_words": 383113,
+    "unique_words": 68663,
+    "avg_words_per_sentence": 17.44,
+    "median_words": 16,
+    "avg_chars_per_sentence": 138.46,
+    "min_words": 1,
+    "max_words": 101,
+    "vocab_size": 68663,
+    "length_distribution": {
+      "4_words": 458,
+      "6_10_words": 2653,
+      "11_20_words": 8553,
+      "over_20_words": 7640
+    }
+  },
+  "corpus_original_espanol": {
+    "name": "Corpus Original Español",
+    "total_sentences": 21964,
+    "total_words": 472045,
+    "unique_words": 35109,
+    "avg_words_per_sentence": 21.49,
+    "median_words": 21,
+    "avg_chars_per_sentence": 115.7,
+    "min_words": 1,
+    "max_words": 504,
+    "vocab_size": 35109,
+    "length_distribution": {
+      "4_words": 364,
+      "6_10_words": 1398,
+      "11_20_words": 6655,
+      "over_20_words": 11108
+    }
+  },
+  "corpus_sintetico_espanol": {
+    "name": "Corpus Sintético Español",
+    "total_sentences": 20564,
+    "total_words": 329336,
+    "unique_words": 22724,
+    "avg_words_per_sentence": 16.02,
+    "median_words": 11,
+    "avg_chars_per_sentence": 91.3,
+    "min_words": 1,
+    "max_words": 250,
+    "vocab_size": 22724,
+    "length_distribution": {
+      "4_words": 894,
+      "6_10_words": 6548,
+      "11_20_words": 6364,
+      "over_20_words": 4514
+    }
+  },
+  "comparison": {
+    "sentence_increase": -1400,
+    "word_increase": -142709,
+    "avg_length_diff": -5.47
+  }
+}

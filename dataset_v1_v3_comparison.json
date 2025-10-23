@@ -1,0 +1,98 @@
+{
+  "dataset_v1": {
+    "awajun": {
+      "name": "V1 - Awajún",
+      "total_sentences": 21964,
+      "total_words": 383113,
+      "unique_words": 68663,
+      "avg_words_per_sentence": 17.44,
+      "median_words": 16,
+      "avg_chars_per_sentence": 138.46,
+      "min_words": 1,
+      "max_words": 101,
+      "vocab_size": 68663,
+      "length_distribution": {
+        "4_words": 458,
+        "6_10_words": 2653,
+        "11_20_words": 8553,
+        "over_20_words": 7640
+      }
+    },
+    "espanol": {
+      "name": "V1 - Español",
+      "total_sentences": 21964,
+      "total_words": 472045,
+      "unique_words": 35109,
+      "avg_words_per_sentence": 21.49,
+      "median_words": 21,
+      "avg_chars_per_sentence": 115.7,
+      "min_words": 1,
+      "max_words": 504,
+      "vocab_size": 35109,
+      "length_distribution": {
+        "4_words": 364,
+        "6_10_words": 1398,
+        "11_20_words": 6655,
+        "over_20_words": 11108
+      }
+    }
+  },
+  "dataset_v3": {
+    "awajun": {
+      "name": "V3 - Awajún",
+      "total_sentences": 42528,
+      "total_words": 616048,
+      "unique_words": 110025,
+      "avg_words_per_sentence": 14.49,
+      "median_words": 12,
+      "avg_chars_per_sentence": 113.48,
+      "min_words": 1,
+      "max_words": 221,
+      "vocab_size": 110025,
+      "length_distribution": {
+        "4_words": 3078,
+        "6_10_words": 10878,
+        "11_20_words": 13508,
+        "over_20_words": 9916
+      }
+    },
+    "espanol": {
+      "name": "V3 - Español",
+      "total_sentences": 42528,
+      "total_words": 801381,
+      "unique_words": 46015,
+      "avg_words_per_sentence": 18.84,
+      "median_words": 16,
+      "avg_chars_per_sentence": 103.9,
+      "min_words": 1,
+      "max_words": 504,
+      "vocab_size": 46015,
+      "length_distribution": {
+        "4_words": 1258,
+        "6_10_words": 7946,
+        "11_20_words": 13019,
+        "over_20_words": 15622
+      }
+    }
+  },
+  "comparison": {
+    "awajun": {
+      "sentence_increase": 20564,
+      "sentence_increase_pct": 93.6,
+      "word_increase": 232935,
+      "word_increase_pct": 60.8,
+      "vocab_increase": 41362,
+      "vocab_increase_pct": 60.2,
+      "avg_length_diff": -2.95
+    },
+    "espanol": {
+      "sentence_increase": 20564,
+      "sentence_increase_pct": 93.6,
+      "word_increase": 329336,
+      "word_increase_pct": 69.8,
+      "vocab_increase": 10906,
+      "vocab_increase_pct": 31.1,
+      "avg_length_diff": -2.65
+    }
+  }
+}

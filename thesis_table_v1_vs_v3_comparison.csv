@@ -1,0 +1,3 @@
+direction,v1_best_chrf,v3_best_chrf,v3_best_dataset,improvement,improvement_pct
+es2agr,34.72,,N/A,,
+agr2es,34.66,35.27,v3-top40,0.61,1.75

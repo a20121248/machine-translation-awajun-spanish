@@ -1,0 +1,16 @@
+dataset_version,model,direction,balance_method,best_chrf,eval_bleu,best_epoch,total_training_time_minutes
+v3,nllb-1.3B-distilled,agr2es,oversample,35.03,14.0,5.0,1122.49
+v3,nllb-1.3B-distilled,agr2es,none,34.55,13.91,5.0,1120.8
+v3,nllb-1.3B-distilled,agr2es,weighted,34.05,13.8,11.0,1422.36
+v3-top20,nllb-1.3B-distilled,agr2es,none,34.87,14.68,5.0,756.11
+v3-top20,nllb-1.3B-distilled,agr2es,oversample,34.71,14.55,6.0,809.24
+v3-top20,nllb-1.3B-distilled,agr2es,weighted,34.54,14.19,9.0,925.44
+v3-top40,nllb-1.3B-distilled,agr2es,oversample,35.27,14.54,9.0,1058.94
+v3-top40,nllb-1.3B-distilled,agr2es,none,34.82,14.76,8.0,1005.34
+v3-top40,nllb-1.3B-distilled,agr2es,weighted,34.34,13.9,17.0,1302.05
+v3-top60,nllb-1.3B-distilled,agr2es,oversample,34.94,13.75,7.0,1081.44
+v3-top60,nllb-1.3B-distilled,agr2es,none,34.77,14.21,6.0,1034.85
+v3-top60,nllb-1.3B-distilled,agr2es,weighted,34.2,14.11,11.0,1261.21
+v3-top80,nllb-1.3B-distilled,agr2es,none,34.94,13.65,5.0,1033.44
+v3-top80,nllb-1.3B-distilled,agr2es,oversample,34.67,14.77,4.0,984.41
+v3-top80,nllb-600M-distilled,agr2es,weighted,31.54,11.4,19.0,1359.76
